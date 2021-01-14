@@ -67,7 +67,7 @@ def get_field_type(column):
     if isinstance(column.type, sqltypes.Enum) and not column.type.enum_class:
         return fields.ChoiceField
 
-    if isinstance(column.type, postgresql.ARRAY):
+    if isinstance(column.type, sqltypes.ARRAY):
         child_field = SERIALIZER_FIELD_MAPPING.get(column.type.item_type.__class__) or SERIALIZER_FIELD_MAPPING.get(
             column.type.item_type.python_type
         )
